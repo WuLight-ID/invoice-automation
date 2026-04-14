@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\ia-backend.props" />
+</Project>
