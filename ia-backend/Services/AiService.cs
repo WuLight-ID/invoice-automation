@@ -3,6 +3,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using InvoiceAI.Models;
+using Microsoft.Extensions.Options;
 
 namespace InvoiceAI.Services
 {
@@ -10,9 +11,9 @@ namespace InvoiceAI.Services
     {
         #region Extract Invoice
         public async Task<InvoiceDto> ExtractInvoice(string text)
-        {
-            var apiKey = "AIzaSyCpmp-8BlXqzwaunm5OC6DdBETIFdnuoY4";
-            var url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + apiKey;
+        {            
+            //var url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + apiKey;
+            var url = $"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={_apiKey}";
 
             var body = new
             {
@@ -62,14 +63,18 @@ namespace InvoiceAI.Services
         }
         #endregion
 
-        #region Helper Functions
+        #region Configurations
         private readonly HttpClient _httpClient;
+        private readonly string _apiKey;
 
-        public AiService(HttpClient httpClient)
+        public AiService(HttpClient httpClient, IOptions<GeminiOptions> options)
         {
             _httpClient = httpClient;
+            _apiKey = options.Value.ApiKey;
         }
+        #endregion
 
+        #region Helper Functions    
         public string ExtractGeminiText(string json)
         {
             using var doc = JsonDocument.Parse(json);

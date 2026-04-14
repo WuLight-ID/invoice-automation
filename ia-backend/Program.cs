@@ -1,4 +1,5 @@
 using InvoiceAI.Services;
+using InvoiceAI.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpClient<AiService>();
+builder.Services.Configure<GeminiOptions>(
+    builder.Configuration.GetSection("Gemini")
+);
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll",
