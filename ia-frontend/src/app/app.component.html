@@ -1,0 +1,13 @@
+<div style="padding:20px">
+  <h2>Invoice AI Upload</h2>
+
+  <input type="file" (change)="onFileSelected($event)" />
+
+  <button (click)="upload()" [disabled]="!selectedFile">
+    Upload
+  </button>
+
+  <pre *ngIf="result">
+{{ result | json }}
+  </pre>
+</div>
