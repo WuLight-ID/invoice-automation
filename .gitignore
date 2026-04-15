@@ -1,0 +1,44 @@
+# =========================
+# .NET
+# =========================
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.log
+
+# prevent compiled debug files (IMPORTANT for your case)
+ia-backend/bin/
+ia-backend/obj/
+
+# =========================
+# Secrets (CRITICAL)
+# =========================
+appsettings.json
+appsettings.*.json
+*.env
+
+# =========================
+# Node / Angular
+# =========================
+node_modules/
+dist/
+.angular/
+
+# =========================
+# Logs
+# =========================
+*.log
+
+# =========================
+# OS junk
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# IDE
+# =========================
+.vscode/
+.idea/
