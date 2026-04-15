@@ -5,8 +5,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class InvoiceService {
-
-  private apiUrl = 'http://localhost:5010/api/invoice/upload';
+  private RenderUrl = 'https://invoice-automation-uebm.onrender.com';
+  private apiUrl = this.RenderUrl + '/api/invoice/upload';
 
   constructor(private http: HttpClient) {}
 
